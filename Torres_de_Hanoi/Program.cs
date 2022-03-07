@@ -18,7 +18,7 @@ namespace Torres_de_Hanoi
             Pila AUX = new Pila(0);
             Pila FIN = new Pila(0);
             
-            int NumMovimientos = hanoi.iterativo(numDiscos, INI, FIN, AUX);
+            int NumMovimientos = hanoi.recursivo(numDiscos, INI, FIN, AUX);
             Console.WriteLine("Movimientos totales: "+NumMovimientos);
             // Keep the console window open in debug mode.
             Console.WriteLine("Press any key to exit.");

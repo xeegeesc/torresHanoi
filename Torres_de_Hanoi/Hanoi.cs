@@ -73,14 +73,35 @@ namespace Torres_de_Hanoi
                     Console.WriteLine("Muevo disco de AUX a FIN");
                     mover_disco(aux, fin);
                     m++;
-                    if (fin.Size == n)
-                    {
-                        return m;
-                    }
+                   
                 }
             }
             return m;
         }
-
+        public int recursivo(int n, Pila ini, Pila fin, Pila aux)
+        {
+            int m = 0;
+            int movAux = 0;
+            if (n == 1)
+            {
+                Console.WriteLine("Movimiento");
+                mover_disco(ini, fin);
+                m++;
+            }
+            else
+            {
+                Console.WriteLine("Recursivo1");
+                movAux+=recursivo((n - 1),  ini,  aux,  fin);
+                
+                Console.WriteLine("Movimiento");
+                mover_disco(ini, fin);
+                m++;
+                Console.WriteLine("Recursivo2");
+                movAux+=recursivo((n - 1), aux, fin, ini);
+                
+            }
+            movAux += m;
+            return movAux;
+        }
     }
 }
