@@ -11,12 +11,75 @@ namespace Torres_de_Hanoi
         /*TODO: Implementar métodos*/
         public void mover_disco(Pila a, Pila b)
         {
-
+            if (a.Top < b.Top)
+            {
+                if (a.Size > 0)
+                {
+                    Disco aux = a.pop();
+                    b.push(aux);
+                }
+            }
+            else
+            {
+                if(b.Size > 0)
+                {
+                    Disco aux = b.pop();
+                    a.push(aux);
+                }
+            }
         }
 
         public int iterativo(int n, Pila ini, Pila fin, Pila aux)
         {
-            return 0;
+            int m = 0;
+
+            if (n%2==0)
+            {
+                while (ini.Size != 0 || aux.Size != 0)
+                {
+                    Console.WriteLine("Muevo disco de INI a AUX");
+                    mover_disco(ini, aux);
+                    m++;
+                    Console.WriteLine("Muevo disco de INI a FIN");
+                    mover_disco(ini, fin);
+                    m++;
+                    Console.WriteLine("Muevo disco de AUX a FIN");
+                    mover_disco(aux, fin);
+                    m++;
+                }
+            }
+            else
+            {
+                while (ini.Size != 0 || aux.Size != 0)
+                {
+                    if (fin.Size == n)
+                    {
+                        return m;
+                    }
+                    Console.WriteLine("Muevo disco de INI a FIN");
+                    mover_disco(ini, fin);
+                    m++;
+                    if(fin.Size == n)
+                    {
+                        return m;
+                    }
+                    Console.WriteLine("Muevo disco de INI a AUX");
+                    mover_disco(ini, aux);
+                    m++;
+                    if (fin.Size == n)
+                    {
+                        return m;
+                    }
+                    Console.WriteLine("Muevo disco de AUX a FIN");
+                    mover_disco(aux, fin);
+                    m++;
+                    if (fin.Size == n)
+                    {
+                        return m;
+                    }
+                }
+            }
+            return m;
         }
 
     }
